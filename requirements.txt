@@ -1,0 +1,11 @@
+numpy
+torch
+torchvision
+open_clip_torch      # for CLIP
+timm                 # for DINO
+scikit-learn
+scipy
+matplotlib
+seaborn
+umap-learn
+jupyter
