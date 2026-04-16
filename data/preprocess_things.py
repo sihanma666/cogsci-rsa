@@ -17,9 +17,12 @@ from scipy.spatial.distance import pdist, squareform
 
 print("THINGS Data Preprocessing")
 
-words_df = pd.read_csv('words.csv', header=None) # Load concept names
-concepts = words_df[0].values  # extract as numpy array
+#load from TSV metadata instead of words.csv
+things_df = pd.read_csv('concepts-metadata_things.tsv', sep='\t') # Load concept names
+concepts = things_df['uniqueID'].values  # extract as numpy array
+
 np.savetxt('concept_names.txt', concepts, fmt='%s') # Save concept names as text file
+
 human_embedding = np.loadtxt('spose_embedding_66d_sorted.txt') # Load human embedding
 assert human_embedding.shape[0] == len(concepts), "embedding and concepts count mismatch :("
 np.save('human_embedding.npy', human_embedding)
